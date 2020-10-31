@@ -11,11 +11,11 @@ AS              = msp430-elf-as
 all: siren.elf 
 
 #additional rules for files
-siren.elf: ${COMMON_OBJECTS} blinkMain.o buzzer.o stateMachines.o led.o wdInterruptHandler.o ../lib/libTimer.a
+toy.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o main.o buzzer.o stateMachines.o led.o wdInterruptHandler.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: siren.elf
-	msp430loader.sh siren.elf
+	msp430loader.sh toy.elf
 
 clean:
 	rm -f *.o *.elf
@@ -26,4 +26,8 @@ wdInterruptHandler.o: stateMachines.h
 
 stateMachines.o: led.h buzzer.h stateMachines.h
 
-buzzer.o: buzzer.h
+buzzer.o: buzzer.h buzzer.c
+
+switches.o: switches.c switches.h
+
+p2_interrupt_handler.o: p2_interrupt_handler.c
