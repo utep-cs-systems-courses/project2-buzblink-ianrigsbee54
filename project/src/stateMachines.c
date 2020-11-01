@@ -2,12 +2,11 @@
 #include "stateMachines.h"
 #include "led.h"
 #include "buzzer.h"
-#include "switches.h"
 
-static char count;
+
+static char count = 0;
 void countToThree()
 {
-  count = 0;
   switch(count){
     
   case 0:
@@ -34,6 +33,8 @@ void countToThree()
     count = 0;
     break;
   }
+  led_changed = 1;
+  led_update();
 }
 /*dims lights to 75%*/
 void dimLights()

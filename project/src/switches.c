@@ -1,8 +1,10 @@
 #include <msp430.h>
 #include "switches.h"
 #include "led.h"
+#include "stateMachines.h"
+#include "buzzer.h"
 
-char SW1down, SW2down, SW3down, SW4down, bttnState;
+char SW1down, SW2down, SW3down, SW4down, bttnState, switch_state_changed;
 switch_update_interrupt_sense()
 {
   char p2val = P2IN;
@@ -31,12 +33,17 @@ switch_interrupt_handler()
   SW2down = (p2val & SW2) ? 0 : 1;
   SW3down = (p2val & SW3) ? 0 : 1;
   SW4down = (p2val & SW4) ? 0 : 1;
+  switch_state_changed = 1;
   if(SW1down){
+    countToThree();
     bttnState = 1;
   }else if(SW2down){
     bttnState = 2;
   }else if(SW3down){
     bttnState = 3;
+    buzzer_set_period(0);
+    resetLEDs();
+    resetCount();
   }else{
     bttnState = 4;
   }
