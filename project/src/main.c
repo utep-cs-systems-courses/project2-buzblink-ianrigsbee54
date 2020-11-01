@@ -2,7 +2,7 @@
 #include "libTimer.h"
 #include "led.h"
 #include "buzzer.h"
-#include "switche.h"
+#include "switches.h"
 
 int main(void) {
   configureClocks();		/* setup master oscillator, CPU & peripheral clocks */
