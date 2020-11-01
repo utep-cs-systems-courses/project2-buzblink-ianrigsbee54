@@ -14,20 +14,20 @@ all: toy.elf
 toy.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o main.o buzzer.o stateMachines.o led.o wdInterruptHandler.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
-load: siren.elf
+load: toy.elf
 	msp430loader.sh toy.elf
 
 clean:
 	rm -f *.o *.elf
 
-led.o: led.c led.h
+led.o: led.h
 
-wdInterruptHandler.o: stateMachines.h
+wdInterruptHandler.o: stateMachines.h buzzer.h led.h switches.h
 
-stateMachines.o: led.h buzzer.h stateMachines.h
+stateMachines.o: led.h buzzer.h stateMachines.h  
 
 buzzer.o: buzzer.h buzzer.c
 
-switches.o: switches.c switches.h
+switches.o:  switches.h led.h stateMachines.h buzzer.h
 
-p2_interrupt_handler.o: p2_interrupt_handler.c
+p2_interrupt_handler.o: switches.h
