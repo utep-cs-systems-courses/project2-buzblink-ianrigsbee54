@@ -4,10 +4,10 @@
 #include "buzzer.h"
 #include "switches.h"
 
+static char count;
 void countToThree()
 {
-  static char count = 0;
-  
+  count = 0;
   switch(count){
     
   case 0:
@@ -38,7 +38,7 @@ void countToThree()
 /*dims lights to 75%*/
 void dimLights()
 {
-  state = 0;
+  static char state = 0;
   switch(state){
   case 0:
     red_on = 1;
@@ -59,10 +59,14 @@ void dimLights()
     red_on = 0;
     green_on = 0;
     state = 0;
-    break
+    break;
   }
   led_changed = 1;
   led_update();
+}
+void annoyEars()
+{
+  static char cs = 0;
 }
 void resetLEDs()
 {

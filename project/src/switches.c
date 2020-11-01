@@ -2,6 +2,7 @@
 #include "switches.h"
 #include "led.h"
 
+char SW1down, SW2down, SW3down, SW4down, bttnState;
 switch_update_interrupt_sense()
 {
   char p2val = P2IN;

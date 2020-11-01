@@ -12,7 +12,7 @@ void __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
       countToThree();
       break;
     case 2:
-      dimLEDs();
+      dimLights();
       break;
     case 3:
       buzzer_set_period(0);
