@@ -8,7 +8,7 @@ LDFLAGS		= -L/opt/ti/msp430_gcc/include
 CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 
-all: siren.elf 
+all: toy.elf 
 
 #additional rules for files
 toy.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o main.o buzzer.o stateMachines.o led.o wdInterruptHandler.o ../lib/libTimer.a
