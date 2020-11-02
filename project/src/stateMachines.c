@@ -67,17 +67,15 @@ void dimLights()
 }
 void annoyEars()
 {
-  static char cs = 0;
+  
 }
-void resetLEDs()
+void reset()
 {
+  buzzer_set_period(0);
+  count = 0;
   red_on = 0;
   green_on = 0;
   led_changed = 1;
   led_update();
-}
-void resetCount()
-{
-  count = 0;
 }
 

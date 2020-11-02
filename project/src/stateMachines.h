@@ -5,7 +5,6 @@ static char count;
 void countToThree();
 void dimLights();
 void annoyEars();
-void resetLEDs();
-void resetCount();
+void reset();
 
 #endif // included

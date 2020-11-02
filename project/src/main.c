@@ -9,6 +9,7 @@ int main(void) {
   enableWDTInterrupts();/* enable periodic interrupt */
   led_init();
   buzzer_init();
+  buzzer_set_period(0);
   switch_init();
   or_sr(0x18);		/* CPU off, GIE on */
 }

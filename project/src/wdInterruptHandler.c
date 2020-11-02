@@ -6,15 +6,14 @@
 
 void __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
   static char blink_count = 0;
-  if (++blink_count != 250) {
-    switch(bttnState){
-    case 2:
+  switch(bttnState){
+  case 2:
+    if(++blink_count != 187){
       dimLights();
       break;
-    case 4:
-      buzzer_set_period(0);
-      break;
     }
+    blink_count = 0;
+  default:
+    buzzer_set_period(0);
   }
-  blink_count = 0;
 }
