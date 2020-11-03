@@ -25,6 +25,8 @@ switch_init()			/* setup switch */
   led_update();
 }
 
+/* I had put reset and countToThree here as i just want them to be single button presses
+   although reset must be held for the buzzer to stop. bttnState is just the state of the buttons.*/
 void
 switch_interrupt_handler()
 {
@@ -33,7 +35,7 @@ switch_interrupt_handler()
   SW2down = (p2val & SW2) ? 0 : 1;
   SW3down = (p2val & SW3) ? 0 : 1;
   SW4down = (p2val & SW4) ? 0 : 1;
-  if(SW1down){
+  if(SW1down){ 
     countToThree();
     bttnState = 1;
   }else if(SW2down){
