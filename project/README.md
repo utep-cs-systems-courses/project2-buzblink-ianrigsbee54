@@ -1,26 +1,15 @@
 ## Description
-This interrupt-driven program flashes the LEDs in a silly pattern.
+A little toy that does an annoying siren sound until you eject hte msp430
 
-## Exploration
+## what each button does
+first you will need to input the command "make" after which you will then have to input the command "make load" to load the program into the msp430
 
-_Write some some code in Assembly Language_
+* button one will count to three with red being one, green being 2, and then both on being 3. It will then reset back to 0 with both lights off.
+* button two will dim the lights to 75%
+* button three will reset all the lights and the count for button one, however to stop the annoying buzzing you have to hold the button until you let go.
+* button four plays an annoying sound that increases then decreases like a siren.
 
-Translate led.c to led_s.s, and modify the Makefile to reference it.  Remember
 
-* to put global and static vars in the data segment and instructions in the
-text segment using the .data and .text directives,
-* to make global symbols visible to other modules using .global, and
-* to import external symbols from other modules with .extern
-
-_Changing speed:_ Figure out how to flash the lights faster or slower.  Determine if there's a speed where the lights don't appear to flash... but glow instead!
-
-_Counting to three:_  Change the program to slowly and repeatedly
-count from zero to three, displaying the value in binary using the red
-& green lights. This is simpler than the program we provided.
-
-## Some Advice
-When creating your own variants to the demo programs,
-it's probably a good idea to keep a copy of the original program (or really understand how _git checkout_ works).  
 
 
 
